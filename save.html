@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<!-- Head -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>YOUR TITLE HERE</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+</head>
+<!-- Head -->
+
+
+<!-- Body -->
+
+<body>
+    <div class="container my-4">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <!-- Your Form -->
+            <form id="my-form" class="mx-auto">
+                <div class="form-group">
+                    <label for="field1">field1 :</label>
+                    <input type="text" class="form-control" id="field1" placeholder="Enter field1 here" required>
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label for="field2">field2 :</label>
+                    <textarea class="form-control" id="field2" rows="3" placeholder="Enter field2 here" style="height: 300px;"
+                        required></textarea>
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label for="field3">Field3 :</label>
+                    <input type="text" class="form-control" id="field3" placeholder="Enter field3 here" required>
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label for="field4">field4 :</label>
+                    <input type="text" class="form-control" id="field4" placeholder="Enter field4 here" required>
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label for="field5">field5 :</label>
+                    <input type="text" class="form-control" id="field5" placeholder="Enter field5 here" required>
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label for="field6">file field6 :</label>
+                    <input type="file" class="form-control-file" id="field6">
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label for="field7">number field7 :</label>
+                    <input type="number" class="form-control" id="field7" placeholder="Enter field7 here" value="5" required>
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label for="field8">select field8 :</label>
+                    <div class="input-group">
+                        <select class="form-control" id="field8" required>
+                            <option value="option1"><i class="fas fa-flag"></i> Option 1</option>
+                            <option value="option2"><i class="fas fa-globe"></i> Option 2</option>
+                            <option value="option3"><i class="fas fa-heart"></i> Option 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label for="field9">date field9 :</label>
+                    <input type="date" class="form-control" id="field9" value="" required>
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label for="field10">time field10 :</label>
+                    <input type="time" class="form-control" id="field10" required>
+                </div>
+                <div style="height: 20px;"></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+                </form>
+            <!-- Your Form -->
+        </div>
+    </div>
+
+    <!-- Include Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
+
+    <!-- JS code here -->
+    <script>
+        const form = document.querySelector('#my-form');
+        const fields = form.querySelectorAll('.form-control[required]');
+
+        form.addEventListener('submit', (event) => {
+            let formIsValid = true;
+
+            fields.forEach((field) => {
+                if (!field.value) {
+                    formIsValid = false;
+                    field.classList.add('is-invalid');
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+
+            if (!formIsValid) {
+                event.preventDefault();
+                alert('Please fill in all mandatory fields.');
+            }
+        });
+    </script>
+    
+    <script>
+
+        //Firebase is a mobile and web application development platform that provides backend infrastructure for applications.To get a Firebase Config, you need to follow these steps:
+
+        // - Create a Firebase account at https://console.firebase.google.com/ if you don't already have one.
+
+        // - Create a new Firebase project by clicking the "Add Project" button in the Firebase console.
+
+        // - Give your project a name and follow the steps to set up the project.You can choose to enable certain Firebase features, such as authentication, realtime database, storage, and push notifications.
+
+        // - Once your project is created, click on the "Project Settings" icon(the gear at the top left of the console) and select "General Project Information".
+
+        // - Scroll down to the "Your Apps" section and click the gear icon next to the app you want to get the setup for.
+
+        // - Select "Add Firebase to your web app" and follow the steps to add the Firebase configuration to your app.
+
+        // - Copy the Firebase Config provided to you and paste it into your app.
+
+        // Your app is now configured to use Firebase.
+
+        // Initialize Firebase
+        var firebaseConfig = {
+            apiKey: "YOUR-API-KEY",
+            authDomain: "YOUR-AUTHDOMAIN",
+            projectId: "YOUR-PROJECTID",
+            storageBucket: "YOUR-STORAGEBUCKET",
+            messagingSenderId: "YOUR-MESSAGINGSENDERID",
+            appId: "YOUR-APPID",
+            measurementId: "YOUR-MEASUREMENTID"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference your "collection"
+
+        // To allow an unauthenticated user to create a collection in Firestore, you need to adjust Firestore's security rules. Here is an example rule that allows an unauthenticated user to create a collection:
+
+        // rules_version = '2';
+        // cloud service. firestore {
+        // match / databases / { database } / documents {
+        // match / { document=**} {
+        // allow read, write: if true;
+        // }
+        // }
+        // }
+
+        // However, keep in mind that allowing unauthenticated users to modify your database can pose a security risk to your application. You should always assess the risks associated with this decision and consider adopting additional security measures if necessary.
+
+        var db = firebase.firestore().collection("collection");
+        
+       // Form event handler
+        document.getElementById("my-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+                // Get form field values
+                var field1 = document.getElementById("field1").value;
+                var field2 = document.getElementById("field2").value;
+                var field3 = document.getElementById("field3").value;
+                var field4 = document.getElementById("field4").value;
+                var field5 = document.getElementById("field5").value;
+                var field6 = document.getElementById("field6").files[0];
+                var field7 = document.getElementById("field7").value;
+                var field8 = document.getElementById("field8").value;
+                var field9 = document.getElementById("field9").value;
+                var field10 = document.getElementById("field10").value;
+
+                // Create Firebase storage reference to upload image to "collection" folder
+
+                // Here is an example rule that allows an unauthenticated user to use storage:
+                // service firebase.storage {
+                //   match / b / { bucket } / o {
+                //                 match / { allPaths=**} {
+                //                       allow read, write;
+                //                 }
+                //             }
+                //         }
+
+                var storageRef = firebase.storage().ref("collection/");
+
+                // Upload image file to "collection" folder if file is selected
+                if (field6) {
+                    storageRef.put(field6)
+                        .then(function (snapshot) {
+                            // Get URL of the uploaded image
+                            return snapshot.ref.getDownloadURL();
+                        })
+                        .then(function (url) {
+                            // Send data to Firebase Firestore with image URL
+                            return db.add({
+                                field1: field1,
+                                field2: field2,
+                                field3: field3,
+                                field4: field4,
+                                field5: field5,
+                                field6: url,
+                                field7: field7,
+                                field8: field8,
+                                field9: field9,
+                                field10: field10
+                            });
+                        })
+                        .then(function (docRef) {
+                            // Update the 'field11' field with document ID
+                            return docRef.update({
+                                field11: docRef.id
+                            });
+                        })
+                        .then(function () {
+                            console.log("Document added with ID, 'field11' field, and 'field6' field updated");
+                        })
+                        .catch(function (error) {
+                            console.error("Error adding document:", error);
+                        });
+                } else { // Otherwise, send data to Firebase Firestore without image URL
+                    db.add({
+                        field1: field1,
+                        field2: field2,
+                        field3: field3,
+                        field4: field4,
+                        field5: field5,
+                        field7: field7,
+                        field8: field8,
+                        field9: field9,
+                        field10: field10
+                    })
+                        .then(function (docRef) {
+                            // Update the 'field11' field with document ID
+                            return docRef.update({
+                                field11: docRef.id
+                            });
+                        })
+                        .then(function () {
+                            console.log("Document added with ID and 'field11' field updated");
+                        })
+                        .catch(function (error) {
+                            console.error("Error adding document:", error);
+                        });
+                }
+
+                // Reset the form
+                document.getElementById("my-form").reset();
+            });
+
+    </script>
+    <!-- for default date -->
+    <script>
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; // January is 0
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+
+        var todayFormatted = yyyy + '-' + mm + '-' + dd;
+        document.getElementById('field9').value = todayFormatted;
+    </script>
+    <!-- for default date -->
+
+    <!-- for default time -->
+    <script>
+        document.getElementById("field10").defaultValue = new Date().toLocaleTimeString('en-US', { hour12: false });
+    </script>
+    <!-- for default time -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
